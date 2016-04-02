@@ -12,6 +12,7 @@ call vundle#rc()
 Plugin 'tpope/vim-surround'
 Plugin 'airblade/vim-gitgutter'
 "Plugin 'altercation/vim-colors-solarized'
+Plugin 'scrooloose/nerdtree'
 Plugin 'VundleVim/Vundle.vim'
 
 
@@ -50,6 +51,9 @@ set updatetime=1618 "Phi. GR. Sweet spot. 'cause 4 sec is too long
 :command Q q
 :command Q1 q!
 
+" Key combos
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <C-o> :NERDTreeToggle<CR> " Toggles nerd tree for ctrl-o
 
 " Themes
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

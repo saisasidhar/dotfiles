@@ -8,7 +8,7 @@
 dir=~/dotfiles
 bdir=~/backup_dotfiles
 vdir=~/.vim/bundle/vundle
-files="vimrc"
+files="vimrc tmux.conf session0.tmux.conf"
 
 main() {
 
@@ -17,7 +17,11 @@ main() {
 
     echo -e "\033[32mbacking up old dotfiles to $bdir\033[0m"
     for file in $files; do
-        mv ~/.$file $bdir
+        if [ -f ~/.$file ]; then 
+            mv ~/.$file $bdir
+        else
+            echo -e "cannot find .$file to backup. skipping"
+        fi
         ln -s $dir/$file ~/.$file
     done
 
@@ -32,7 +36,7 @@ setup_vundle(){
         git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/vundle
     fi
 
-    vim +PluginInstall +qall
+    vim +PluginInstall +bdelete +qall
 }
 
 main
