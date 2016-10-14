@@ -8,7 +8,7 @@
 dir=~/dotfiles
 bdir=~/backup_dotfiles
 vdir=~/.vim/bundle/vundle
-files="vimrc tmux.conf session0.tmux.conf"
+files="vimrc tmux.conf session0.tmux.conf gitconfig"
 
 main() {
 
@@ -33,7 +33,7 @@ setup_vundle(){
 
     if [ ! -d "$vdir" ]; then
         echo -e "\033[32mbundle/vundle does not exists. cloning one\033[0m"
-        git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/vundle
+        git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/Vundle.vim
     fi
 
     vim +PluginInstall +bdelete +qall

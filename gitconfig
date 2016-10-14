@@ -1,0 +1,15 @@
+[user]
+	name = Sai Sasidhar Maddali
+	email = sai.sasidhar92@gmail.com
+[core]
+    editor = vim
+[alias]
+    cb = checkout -b
+    s = status
+
+    # Short log
+    l = log --pretty=oneline -n 10 --graph --abbrev-commit
+    
+    # Pretty log
+    lg = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+
