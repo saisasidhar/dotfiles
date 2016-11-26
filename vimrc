@@ -15,6 +15,8 @@ Plugin 'airblade/vim-gitgutter'
 "The terminal is already solarized
 "Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdtree'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
 
@@ -56,6 +58,8 @@ set updatetime=1618 "Phi. GR. Sweet spot. 'cause 4 sec is too long
 " Key combos
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <C-o> :NERDTreeToggle<CR> " Toggles nerd tree for ctrl-o
+cnoremap <expr> %% expand('%:h').'/'
+nnoremap ; :
 
 " Themes
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
