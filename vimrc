@@ -17,6 +17,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'rust-lang/rust.vim'
 
 call vundle#end()
 
