@@ -31,11 +31,14 @@ set shiftwidth=4
 set expandtab
 set autoindent
 set smartindent
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+set list
 
 
 " UI UX
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set number
+set relativenumber
+set nu rnu
 set numberwidth=4
 set ignorecase
 set smartcase
