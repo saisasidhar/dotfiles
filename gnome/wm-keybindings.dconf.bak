@@ -1,0 +1,8 @@
+[/]
+switch-to-workspace-left=['<Primary><Alt>Left']
+switch-to-workspace-1=['<Super>1']
+switch-to-workspace-2=['<Super>2']
+switch-to-workspace-3=['<Super>3']
+show-desktop=['<Super>d']
+switch-to-workspace-4=['<Super>4']
+panel-main-menu=['<Super>s', '<Alt>F1']

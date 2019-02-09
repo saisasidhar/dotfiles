@@ -31,8 +31,6 @@ set shiftwidth=4
 set expandtab
 set autoindent
 set smartindent
-set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
-set list
 
 
 " UI UX

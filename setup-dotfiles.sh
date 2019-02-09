@@ -1,20 +1,15 @@
 #!/bin/bash
-#==============================================================================
-#			   _______   ____  _______   ___________  __ _____   ___ 
-#			  / __/ _ | /  _/ / __/ _ | / __/  _/ _ \/ // / _ | / _ \
-#			 _\ \/ __ |_/ /  _\ \/ __ |_\ \_/ // // / _  / __ |/ , _/
-#			/___/_/ |_/___/ /___/_/ |_/___/___/____/_//_/_/ |_/_/|_| 
-#                                                        
-#==============================================================================
 
 GR='\033[0;32m'
 OR='\033[0;33m'
 NC='\033[0m'
 
+username="$(whoami)"
 dir=~/dotfiles
 bdir=~/backup_dotfiles
 vdir=~/.vim/bundle/vundle
 i3dir=~/.i3
+vscdir=~/.config/Code/User
 files="vimrc tmux.conf session0.tmux.conf gitconfig i3/config i3/i3status.conf"
 
 main() {
@@ -36,7 +31,43 @@ main() {
     # Setup vundle for vim
     setup_vundle
 
-    echo -e "${GR}done. I think.${NC}"
+    # Setup VS Code
+    read -p "Setup VS Code (y/n)? " ans
+    case "$ans" in
+        y|Y ) setup_vscode;;
+        * ) echo "Skipping VS code installation"
+    esac
+    
+    # gnome customization
+    read -p "Is this a gnome desktop environment (y/n)? " ans
+    case "$ans" in
+        y|Y ) setup_gnome;;
+        * ) echo "Skipping gnome customization"
+    esac
+
+    echo -e "${GR}Done. I think.${NC}"
+}
+
+setup_gnome(){
+    echo "Zenity will now be installed"
+    sudo apt-get install zenity
+
+    cp ${dir}/gnome/media-keys-keybindings.dconf.bak ${dir}/gnome/mkk.dconf.bak
+    sed -i -e "s/CHANGEME/$username/g" ${dir}/gnome/mkk.dconf.bak
+
+    dconf load /org/gnome/desktop/wm/keybindings/ < $dir/gnome/wm-keybindings.dconf.bak
+    dconf load /org/gnome/settings-daemon/plugins/media-keys/ < $dir/gnome/mkk.dconf.bak
+
+    rm $dir/gnome/mkk.dconf.bak
+
+    echo -e "${OR}gnome shell must be restarted for the changes to take effect${NC}"
+}
+
+setup_vscode(){
+    cp $dir/vscode/keybindings.json $vscdir
+    cp $dir/vscode/settings.json $vscdir
+
+    cat $dir/vscode/extensions.list | xargs -L 1 code --install-extension
 }
 
 setup_vundle(){

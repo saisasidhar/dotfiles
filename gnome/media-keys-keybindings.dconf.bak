@@ -1,0 +1,19 @@
+[/]
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/']
+terminal=''
+screencast='<Alt>r'
+
+[custom-keybindings/custom2]
+binding='<Super>e'
+command='nautilus /home/CHANGEME'
+name='Explore Files'
+
+[custom-keybindings/custom1]
+binding='<Shift>Delete'
+command="zenity --error --text='You shall not shift-delete !!!'"
+name='Prevent Shift+Delete'
+
+[custom-keybindings/custom0]
+binding='<Primary><Alt>t'
+command='gnome-terminal --full-screen'
+name='Launch Gnome Terminal in Full Screen'
