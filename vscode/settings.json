@@ -9,20 +9,15 @@
     "breadcrumbs.enabled": false,
     "editor.formatOnSave": true,
     "editor.fontFamily": "'Fira Code', 'Droid Sans'",
-    "editor.renderWhitespace": "all",
-    "editor.multiCursorModifier": "ctrlCmd",
-    "editor.wordWrap": "wordWrapColumn",
-    "editor.rulers": [79, 119],
-    "editor.renderControlCharacters": true,
     "editor.fontLigatures": true,
+    "editor.renderWhitespace": "all",
+    "editor.renderControlCharacters": true,
+    "editor.rulers": [79, 119],
     "editor.formatOnPaste": true,
     "files.autoSave": "afterDelay",
     "files.exclude": {
         "*.lipi": true
     },
+    "editor.multiCursorModifier": "ctrlCmd",
     "python.pythonPath": "/usr/bin/python3",
-    "rust.rustup": {
-        "toolchain": "stable-x86_64-unknown-linux-gnu"
-    },
-    "rust.mode": "legacy"
 }
