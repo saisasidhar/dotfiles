@@ -12,12 +12,10 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'airblade/vim-gitgutter'
-"The terminal is already solarized
-"Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdtree'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'rust-lang/rust.vim'
+Plugin 'tpope/vim-eunuch'
 
 call vundle#end()
 
@@ -63,7 +61,3 @@ map <C-o> :NERDTreeToggle<CR> " Toggles nerd tree for ctrl-o
 cnoremap <expr> %% expand('%:h').'/'
 nnoremap ; :
 
-" Themes
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"set background=black
-"colorscheme solarized
