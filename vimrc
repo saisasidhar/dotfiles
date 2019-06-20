@@ -16,6 +16,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-eunuch'
+Plugin 'fatih/vim-go'
 
 call vundle#end()
 
