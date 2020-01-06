@@ -10,7 +10,7 @@ name='Explore Files'
 
 [custom-keybindings/custom1]
 binding='<Shift>Delete'
-command="zenity --error --text='You shall not shift-delete !!!'"
+command="zenity --error --text='You shall not purgeeeee !!!'"
 name='Prevent Shift+Delete'
 
 [custom-keybindings/custom0]

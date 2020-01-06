@@ -14,9 +14,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'easymotion/vim-easymotion'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-eunuch'
-Plugin 'fatih/vim-go'
 
 call vundle#end()
 
@@ -46,6 +44,7 @@ set noerrorbells
 set vb t_vb=
 set laststatus=2
 set updatetime=1618 "Phi. GR. Sweet spot. 'cause 4 sec is too long
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 
 
 " Fix for fat butter fingers
@@ -59,6 +58,7 @@ set updatetime=1618 "Phi. GR. Sweet spot. 'cause 4 sec is too long
 " Key combos
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <C-o> :NERDTreeToggle<CR> " Toggles nerd tree for ctrl-o
+map <C-i> :set list!<CR> " Toggles invisible chars
+map <C-p> :set paste!<CR> " Toggles paste
 cnoremap <expr> %% expand('%:h').'/'
 nnoremap ; :
-
