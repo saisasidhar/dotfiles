@@ -1,17 +1,23 @@
 [user]
-	name = Sai Sasidhar Maddali
-	email = mail@sasidhar.in
+    name = Sai Sasidhar Maddali
+    email = mail@sasidhar.in
 [core]
     editor = vim
 [alias]
     cb = checkout -b
     s = status
+    co = checkout
+    d = diff
+    ds = diff --staged
+    a = add
+    r = restore
+    rs = restore --staged
+    u = reset HEAD # unstage
 
     # Short log
     l = log --pretty=oneline -n 10 --graph --abbrev-commit
     
     # Pretty log
     lg = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
-
 [commit]
-	gpgsign = true
+    gpgsign = true
