@@ -47,14 +47,6 @@ set updatetime=1618 "Phi. GR. Sweet spot. 'cause 4 sec is too long
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 
 
-" Fix for fat butter fingers
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-:command WQ wq
-:command Wq wq
-:command W w
-:command Q q
-:command Q1 q!
-
 " Key combos
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <C-o> :NERDTreeToggle<CR> " Toggles nerd tree for ctrl-o
