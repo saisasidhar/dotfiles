@@ -11,7 +11,8 @@ bdir=~/backup_dotfiles
 # symlinks
 i3dir=~/.config/i3
 polybardir=~/.config/polybar
-files="vimrc tmux.conf session0.tmux.conf gitconfig config/i3/config config/i3/i3status.conf config/polybar/config config/polybar/launch.sh"
+vimdir=~/.vim
+files="tmux.conf gitconfig vim/vimrc config/i3/config config/i3/i3status.conf config/polybar/config config/polybar/launch.sh"
 
 vscdir=~/.config/Code/User
 vdir=~/.vim/bundle/vundle
@@ -58,6 +59,7 @@ setup_configs() {
     mkdir -p $bdir
     mkdir -p $i3dir
     mkdir -p $polybardir
+    mkdir -p $vimdir
     cd $dir
 
     echo -e "${OR}backing up old dotfiles (if any) to ${bdir}${NC}"
