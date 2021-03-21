@@ -1,0 +1,5 @@
+*.swp
+*.lipi
+*.o
+*.pyc
+tags

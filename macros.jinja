@@ -1,0 +1,18 @@
+{% macro symlinkfile(name, src, dest) -%}
+{{name}}:
+  file.symlink:
+    - name: {{ salt["environ.get"]("HOME") }}/{{dest}}
+    - target: {{ grains["cwd"] }}/{{src}}
+    - user: {{ salt["environ.get"]("USER") }}
+    - makedirs: True
+    - force: True
+{%- endmacro %}
+
+{% macro cleandir(name, dir) -%}
+{{name}}-clean:
+  file.directory:
+    - name: {{ salt["environ.get"]("HOME") }}/{{dir}}
+    - user: {{ salt["environ.get"]("USER") }}
+    - makedirs: True
+    - clean: True
+{%- endmacro %}
