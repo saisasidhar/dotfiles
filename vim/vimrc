@@ -1,7 +1,8 @@
-" Vundle
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set encoding=utf-8
 set nocompatible
-filetype off        
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -9,9 +10,10 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'scrooloose/nerdtree'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'tpope/vim-eunuch'
+Plugin 'arcticicestudio/nord-vim'
+Plugin 'itchyny/lightline.vim'
 
 call vundle#end()
 
@@ -19,6 +21,8 @@ filetype plugin indent on
 syntax enable
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set tabstop=2 softtabstop=2 shiftwidth=2
+set expandtab autoindent smartindent
 set relativenumber
 set nu rnu
 set numberwidth=4
@@ -42,11 +46,47 @@ set colorcolumn=120
 :command Q1 q!
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <C-e> :NERDTreeToggle<CR> " Toggles nerd tree for ctrl-e
-map <C-k> :set list!<CR> " Toggles invisible chars
-map <C-p> :set paste!<CR> " Toggles paste
+nnoremap <C-k> :set list!<CR>
+nnoremap <C-p> :set paste!<CR>i
 cnoremap <expr> %% expand('%:h').'/'
 nnoremap ; :
+nnoremap <Space> :nohl<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set path=.,**
+set wildmenu
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:netrw_banner=0
+let g:netrw_winsize=24
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+
+let g:NetrwIsOpen=0
+function! ToggleNetrw()
+    if g:NetrwIsOpen
+        let i = bufnr("$")
+        while (i >= 1)
+            if (getbufvar(i, "&filetype") == "netrw")
+                silent exe "bwipeout " . i
+            endif
+            let i-=1
+        endwhile
+        let g:NetrwIsOpen=0
+    else
+        let g:NetrwIsOpen=1
+        silent Lexplore
+    endif
+endfunction
+
+noremap <silent> <C-E> :call ToggleNetrw()<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"https://github.com/tmux/tmux/issues/1246
+if (exists('+termguicolors'))
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+colorscheme nord
+let g:lightline = {'colorscheme': 'nord',}

@@ -1,6 +1,7 @@
 [user]
     name = Sai Sasidhar Maddali
     email = mail@sasidhar.in
+    signingkey = mail@sasidhar.in
 [core]
     editor = vim
 [alias]
