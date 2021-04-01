@@ -1,159 +1,212 @@
+[colors]
+background = ${xrdb:background:#000000}
+color1 = ${xrdb:color1:#ff5555}
+color2 = ${xrdb:color4:#ff5555}
+color3 = ${xrdb:color7:#ff5555}
+
 [bar/mythemy]
-width = 100%
+enable-ipc=true
 height = 27
-radius = 0
-fixed-center = true
+width = 100%
+background = ${colors.background}
+foreground = ${colors.color3}
+line-size = 4
+padding = 1
 
-background = #1e1e20
-foreground = #c5c8c6
+font-0 = "Fira Code Semibold:size=10;2"
+font-1 = "Font Awesome 5 Free:style=Solid:size=10;2"
+font-2 = "Font Awesome 5 Brands:size=10;2"
 
-line-size = 3
-line-color =
-
-border-size = 0
-border-color =
-
-padding-left = 0
-padding-right = 2
-
-module-margin-left = 1
-module-margin-right = 2
-
-font-0 = "Source Code Pro Semibold:size=10;1"
-font-1 = "Font Awesome 5 Free:style=Solid:size=10;1"
-font-2 = "Font Awesome 5 Brands:size=10;1"
-
-modules-left = i3
-modules-center = date
-modules-right = wlan eth powermenu
-
-tray-position = right
-;tray-padding = 
-;wm-restack = i3
-;override-redirect = true
-
-cursor-click = pointer
-cursor-scroll = ns-resize
+modules-left = i3 
+modules-center = datetime
+modules-right = wlan cpu memory temperature pulseaudio powermenu
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+wm-restack = i3
+override-redirect = false
 
 [module/i3]
 type = internal/i3
 format = <label-state> <label-mode>
+format-foreground = ${colors.color3}
+format-background = ${colors.background}
 index-sort = true
-wrapping-scroll = false
-
-label-mode-padding = 2
-label-mode-foreground = #1e1e20
-label-mode-background = #56737a
-
+enable-click = true
+reverse-scroll = false
 label-focused = %index%
-label-focused-background = #2c5159
-label-focused-foreground = #6b7443
+label-focused-overline = ${colors.color3}
 label-focused-padding = 2
-
 label-unfocused = %index%
-label-unfocused-background = #56737a
-label-unfocused-foreground = #1e1e20
 label-unfocused-padding = 2
-
-label-visible = %index%
-label-visible-background = #56737a
-label-visible-foreground = #1e1e20
-label-visible-padding = 2
-
-label-urgent = %index%
-label-urgent-background = #BA2922
+label-urgent = 
 label-urgent-padding = 2
+label-urgent-foreground = ${colors.background}
+label-urgent-background = ${colors.color3}
+label-urgent-overline = ${colors.background}
+label-urgent-font = 2
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-default = 
+
+[module/power]
+type = custom/text
+content = 
+content-foreground = ${colors.color3}
+click-left = powermenu
+content-padding = 2
+
+[module/mpd]
+type = internal/mpd
+host = 127.0.0.1
+port = 6600
+format-online = <icon-prev> <toggle> <icon-next> <label-song> <label-time>
+format-online-padding = 2
+format-online-foreground = ${colors.color2}
+format-online-background = ${colors.background}
+label-song-foreground = ${colors.color2}
+label-song-background = ${colors.background}
+label-song-padding = 2
+label-time-foreground = ${colors.color2}
+label-time-background = ${colors.background}
+label-time-padding = 1
+format-offline = <label-offline>
+label-offline =  offline
+format-offline-padding = 2
+format-offline-foreground = ${colors.color2}
+format-offline-background = ${colors.background}
+bar-progress-width = 35
+bar-progress-indicator = |
+bar-progress-fill = ─
+bar-progress-empty = ─
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+label-song-maxlen = 75
+label-song-ellipsis = true
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-padding = 3
+format-foreground = ${colors.color3}
+label = %percentage%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-padding = 3
+format-prefix = " "
+format-foreground = ${colors.color3}
+label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
 interface = wlp9s0
 interval = 3.0
-
-format-connected = <ramp-signal> <label-connected>
-format-connected-foreground = #80969b
-format-connected-background = #1e1e20
-format-connected-padding = 2
+format-padding = 3
+format-connected =  <label-connected>
 label-connected = %essid%
-
-format-disconnected =
-
+label-connected-color3 = ${colors.color3}
+format-disconnected = <label-disconnected>
+label-disconnected = %ifname% disconnected
+label-disconnected-color3 = ${colors.color3}
 ramp-signal-0 = 
 ramp-signal-1 = 
 ramp-signal-2 = 
 ramp-signal-3 = 
 ramp-signal-4 = 
-ramp-signal-foreground = #1e1e20
+ramp-signal-color3 = ${colors.color3}
 
 [module/eth]
 type = internal/network
 interface = enp8s0
 interval = 3.0
-
-format-connected-padding = 2
-format-connected-foreground = #80969b
-format-connected-background = #1e1e20
+format-padding = 3
 format-connected-prefix = " "
-format-connected-prefix-foreground = #80969b
+format-connected-prefix-color3 = ${colors.color3-alt}
 label-connected = %local_ip%
-
 format-disconnected =
 
-[module/date]
+[module/datetime]
 type = internal/date
+time = "%H:%M"
+date = "%d %b"
+label =   %date%, %time%
+label-foreground = ${colors.color3}
+label-background = ${colors.background}
+label-padding = 2
+interval = 10
+format-margin = 0
+
+[module/pulseaudio]
+type = internal/pulseaudio
+format-margin = 3
+format-volume-padding = 2
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage:3:3%%
+format-volume-foreground = ${colors.color3}
+format-volume-background = ${colors.background}
+use-ui-max = false
+ramp-volume-0 = ""
+ramp-volume-1 = ""
+ramp-volume-2 = ""
+label-muted = "MUTED" 
+label-muted-background = ${colors.background}
+label-muted-foreground = ${colors.color3}
+label-muted-padding = 2
 interval = 5
 
-date =
-date-alt = " %Y-%m-%d"
-
-time = %H:%M
-time-alt = %H:%M:%S
-
-format-prefix = 
-format-foreground = #1e1e20
-format-background = #416269
-format-padding = 2
-
-label = %date% %time%
+[module/temperature]
+type = internal/temperature
+format-margin = 3
+format = <ramp> <label>
+format-warn = <ramp> <label-warn>
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-color3 = ${colors.color3}
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+thermal-zone = 0
+warn-temperature = 60
 
 [module/powermenu]
 type = custom/menu
-
-expand-right = true
-
-format-spacing = 1
-
+expand-right = false
+format-spacing = 3
+format-margin = 3
+format-background = ${colors.background}
+format-foreground = ${colors.color3}
+format-padding = 2
 label-open = 
-label-open-foreground = #56737a
-label-close =  cancel
-label-close-foreground = #56737a
+label-close = 
 label-separator = |
-label-separator-foreground = #80969b
-
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
+menu-0-1 = 
 menu-0-1-exec = menu-open-2
-menu-0-2 = log off
+menu-0-2 = 
 menu-0-2-exec = menu-open-3
-
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = reboot
-
-menu-2-0 = power off
-menu-2-0-exec = poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
-
-menu-3-0 = log off
-menu-3-0-exec = pkill -KILL -u $USER
-menu-3-1 = cancel
-menu-3-1-exec = menu-open-0
+menu-0-0 = 
+menu-0-0-exec = menu-open-1
+menu-2-0 = 
+menu-2-0-exec = reboot
+menu-3-0 = 
+menu-3-0-exec = poweroff
+menu-1-0 = 
+menu-1-0-exec = i3-msg exit || openbox --exit
 
 [settings]
 screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = true
 
 [global/wm]
-margin-top = 5
-margin-bottom = 5
+margin-top = 0
+margin-bottom = 0
+; vim:ft=dosini

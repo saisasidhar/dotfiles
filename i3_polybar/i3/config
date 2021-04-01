@@ -23,7 +23,7 @@ bindsym $mod+Shift+q kill
 # rofi
 # bindsym $mod+d exec --no-startup-id rofi -show run
 # dmenu
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec dmenu_run -l 5 -p ➜
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -122,15 +122,6 @@ bindsym $mod+r mode "resize"
 
 # polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-# i3status
-# bar {
-# 		status_command i3status -c $HOME/.config/i3/i3status.conf
-# 		colors{
-# 			background #242424
-# 		}
-# }
-#bindsym $mod+m bar mode invisible
-#bindsym $mod+Shift+M bar mode dock
 
 # Additional config
 bindsym $mod+l exec i3lock -c 343434
