@@ -3,6 +3,7 @@ set nocompatible
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 filetype off
+filetype plugin indent off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -14,6 +15,7 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'tpope/vim-eunuch'
 Plugin 'arcticicestudio/nord-vim'
 Plugin 'itchyny/lightline.vim'
+Plugin 'fatih/vim-go'
 
 call vundle#end()
 
@@ -21,10 +23,10 @@ filetype plugin indent on
 syntax enable
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set tabstop=2 softtabstop=2 shiftwidth=2
+set tabstop=4 softtabstop=4 shiftwidth=4
 set expandtab autoindent smartindent
+set number
 set relativenumber
-set nu rnu
 set numberwidth=4
 set ignorecase
 set smartcase
@@ -37,6 +39,18 @@ set laststatus=2
 set updatetime=1618 "Phi. GR. Sweet spot. 'cause 4 sec is too long
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 set colorcolumn=120
+set splitbelow
+set splitright
+set showcmd
+set noshowmode
+set cursorline
+let mapleader="\<Space>"
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[0 q"
+set ttimeout
+set ttimeoutlen=1
+set ttyfast
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 :command WQ wq
@@ -46,11 +60,14 @@ set colorcolumn=120
 :command Q1 q!
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <C-k> :set list!<CR>
-nnoremap <C-p> :set paste!<CR>i
+map <silent> <leader>i :set list!<CR>
+map <silent> <leader>p :set paste!<CR>i
 cnoremap <expr> %% expand('%:h').'/'
-nnoremap ; :
-nnoremap <Space> :nohl<CR>
+nnoremap \ :nohl<CR>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set path=.,**
@@ -88,5 +105,42 @@ if (exists('+termguicolors'))
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
-colorscheme nord
-let g:lightline = {'colorscheme': 'nord',}
+silent! colorscheme nord
+" An inactive line has only one set (RO, FN, MD) on the left. So it shifts to
+" position 0 and uses the highlight color. Fixes the inconsistent behavior
+silent! let g:lightline = {
+  \ 'colorscheme': 'nord',
+  \ 'inactive': {
+  \    'left': [ [ 'placeholder' ],
+  \              [ 'readonly', 'filename', 'modified' ] ]
+  \ },
+  \ 'component': {
+  \   'placeholder' : ''
+  \ },
+  \ }
+
+" Custom colors remapped in existing nord theme
+highlight Keyword guifg=#D08770 gui=NONE ctermfg=117 cterm=NONE
+highlight Statement guifg=#D08770 gui=NONE ctermfg=117 cterm=NONE
+highlight Function guifg=#88C0D0 gui=NONE ctermfg=117 cterm=NONE
+highlight Type guifg=#81A1C1 gui=NONE ctermfg=117 cterm=NONE
+
+" Syntax under carret. Useful for debugging 
+function! SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+command! Syn call SynStack()
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set autowrite " saves before running make
+" https://vim.fandom.com/wiki/Automatically_open_the_quickfix_window_on_:make
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
+nnoremap <F10> :make<CR><CR>
+nnoremap <C-N> :cnext<CR>
+nnoremap <C-P> :cprevious<CR>
+nnoremap <C-C> :cclose<CR>
+
