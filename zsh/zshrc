@@ -16,3 +16,5 @@ source $ZSH/oh-my-zsh.sh
 export GPG_TTY=$(tty)
 
 alias bat="batcat"
+
+alias fixtty='reset; stty sane; tput rs1; clear; echo -e "\033c"'
