@@ -13,6 +13,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'tpope/vim-eunuch'
+Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'preservim/tagbar'
 Plugin 'arcticicestudio/nord-vim'
 Plugin 'itchyny/lightline.vim'
 Plugin 'fatih/vim-go'
@@ -144,3 +146,10 @@ nnoremap <C-N> :cnext<CR>
 nnoremap <C-P> :cprevious<CR>
 nnoremap <C-C> :cclose<CR>
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" set statusline+=%{gutentags#statusline()}
+let g:gutentags_file_list_command = {
+  \ 'markers': {
+  \   'pyproject.toml': expand('~/.vim/gen_file_list_for_gutentags.py') . ' ///absolute'
+  \ }
+  \}
