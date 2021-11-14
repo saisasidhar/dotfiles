@@ -6,7 +6,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="ohmytheme"
 
-plugins=(git fzf docker z)
+plugins=(git fzf docker z virtualenv)
 
 source $ZSH/oh-my-zsh.sh
 

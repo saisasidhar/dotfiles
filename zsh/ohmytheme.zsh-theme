@@ -6,7 +6,7 @@
 # Which is again based on Gitster theme
 # https://github.com/shashankmehta/dotfiles/blob/master/thesetup/zsh/.oh-my-zsh/custom/themes/gitster.zsh-theme
 
-local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
+local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )% %{$reset_color%}"
 
 function get_pwd(){
   git_root=$PWD
@@ -51,7 +51,13 @@ function get_root_status() {
   fi
 }
 
-PROMPT='$ret_status$(get_root_status)$(get_ssh_status)$(get_jobs_status)%{$fg[white]%}$(get_pwd) %{$reset_color%}$(git_prompt_info)$(get_git_status)'
+function get_venv_status() {
+  if [[ "$(virtualenv_prompt_info)" ]]; then
+    echo "%{$fg[cyan]%}౪ %{$reset_color%}"
+  fi
+}
+
+PROMPT='$(get_root_status)$(get_ssh_status)$(get_jobs_status)$(get_venv_status)%{$fg[white]%}$(get_pwd) %{$reset_color%}$(git_prompt_info)$(get_git_status)$ret_status'
 
 # Git info
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[cyan]%}⎇  "
