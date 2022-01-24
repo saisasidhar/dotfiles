@@ -3,5 +3,5 @@
 git:
   pkg.installed
 
-{{ symlinkfile(sls~'-gitconfig', slspath~'/gitconfig', '.gitconfig') }}
-{{ symlinkfile(sls~'-gitignore-global', slspath~'/gitignore_global', '.gitignore_global') }}
+{{ symlinkfile(sls~'-gitconfig', slspath~'/.gitconfig', '.gitconfig') }}
+{{ symlinkfile(sls~'-gitignore-global', slspath~'/.gitignore_global', '.gitignore_global') }}

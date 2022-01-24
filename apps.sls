@@ -5,6 +5,7 @@ base-packages:
       - bat
       - fzf
       - gdb
+      - wget
 
 
 {% if grains['osfullname'] == 'Ubuntu' %}

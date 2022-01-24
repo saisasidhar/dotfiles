@@ -3,4 +3,4 @@
 tmux:
   pkg.installed
 
-{{ symlinkfile(sls~'-conf', slspath~'/tmux.conf', '.tmux.conf') }}
+{{ symlinkfile(sls~'-conf', slspath~'/.tmux.conf', '.tmux.conf') }}

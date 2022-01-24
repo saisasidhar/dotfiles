@@ -6,8 +6,7 @@ vim:
 
 {{ cleandir(sls~'-clean', '.vim') }}
 
-{{ symlinkfile(sls~'-vimrc', slspath~'/vimrc', '.vim/vimrc') }}
-{{ symlinkfile(sls~'-after-python', slspath~'/after/ftplugin/python.vim', '.vim/after/ftplugin/python.vim') }}
+{{ symlinkfile(sls~'-vimdir', slspath~'/.vim', '.vim') }}
 
 vim-vundle:
   git.cloned:

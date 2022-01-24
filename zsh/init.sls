@@ -12,10 +12,16 @@ oh-my-zsh-clean:
 
 oh-my-zsh-install:
   cmd.run:
-    - name: sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    - name: sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --skip-chsh --keep-zshrc
     - user: {{ salt["environ.get"]("USER") }}
-    - quite: True
     - timeout: 240
 
-{{ symlinkfile(sls~'-zshrc', slspath~'/zshrc', '.zshrc') }}
-{{ symlinkfile(sls~'-theme', slspath~'/ohmytheme.zsh-theme', '.oh-my-zsh/custom/themes/ohmytheme.zsh-theme') }}
+oh-my-zsh-postinstall-clean:
+  cmd.run:
+    - name: rm {{ salt["environ.get"]("HOME") }}/.zshrc
+    - user: {{ salt["environ.get"]("USER") }}
+    - quite: True
+
+{{ symlinkfile(sls~'-zshrc', slspath~'/.zshrc', '.zshrc') }}
+{{ symlinkfile(sls~'-zshenv', slspath~'/.zshenv', '.zshenv') }}
+{{ symlinkfile(sls~'-theme', slspath~'/.oh-my-zsh/custom/themes/ohmytheme.zsh-theme', '.oh-my-zsh/custom/themes/ohmytheme.zsh-theme') }}
