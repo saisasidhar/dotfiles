@@ -60,7 +60,7 @@ function get_venv_status() {
 PROMPT='$(get_root_status)$(get_ssh_status)$(get_jobs_status)$(get_venv_status)%{$fg[white]%}$(get_pwd) %{$reset_color%}$(git_prompt_info)$(get_git_status)$ret_status'
 
 # Git info
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[cyan]%}⎇  "
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[cyan]%}⎇ "
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
 ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[yellow]%}✗%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg[green]%}✓%{$reset_color%}"

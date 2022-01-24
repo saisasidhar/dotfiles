@@ -63,7 +63,7 @@ set ttyfast
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <silent> <leader>i :set list!<CR>
-map <silent> <leader>p :set paste!<CR>i
+map <silent> <leader>p <ESC>:set paste<CR>i
 cnoremap <expr> %% expand('%:h').'/'
 nnoremap \ :nohl<CR>
 nnoremap <C-J> <C-W><C-J>
