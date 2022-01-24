@@ -6,7 +6,7 @@
 # Which is again based on Gitster theme
 # https://github.com/shashankmehta/dotfiles/blob/master/thesetup/zsh/.oh-my-zsh/custom/themes/gitster.zsh-theme
 
-local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )% %{$reset_color%}"
+local ret_status="%(?:%{$fg_bold[green]%}➜  :%{$fg_bold[red]%}➜  )% %{$reset_color%}"
 
 function get_pwd(){
   git_root=$PWD
