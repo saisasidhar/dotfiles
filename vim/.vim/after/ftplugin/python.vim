@@ -2,7 +2,7 @@ setlocal tabstop=4 softtabstop=4 shiftwidth=4
 setlocal colorcolumn=80
 
 setlocal path=.,**
-setlocal wildignore=*.pyc,*/__pycache__/*,*/venv/*
+setlocal wildignore=*.pyc,*/__pycache__/*
 
 hi def link pythonInclude Keyword
 hi def link pythonConditional Keyword

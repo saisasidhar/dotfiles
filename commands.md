@@ -2,6 +2,7 @@
 
 ~~~sh
 # before
+# install wget git zsh stow
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --skip-chsh --keep-zshrc
 rm ~/.zshrc
 

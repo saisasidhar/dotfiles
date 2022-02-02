@@ -148,8 +148,9 @@ nnoremap <C-C> :cclose<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " set statusline+=%{gutentags#statusline()}
+let g:gutentags_project_root = ['.git', 'pyproject.toml', 'requirements.txt', 'package.json', 'go.mod']
 let g:gutentags_file_list_command = {
   \ 'markers': {
-  \   'pyproject.toml': expand('~/.vim/gen_file_list_for_gutentags.py') . ' ///absolute'
+  \   'pyproject.toml': expand('~/.vim/gen_file_list_for_gutentags') . ' ///absolute'
   \ }
   \}
