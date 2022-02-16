@@ -1,9 +1,9 @@
 <scheme name="NordSoud" version="142" parent_scheme="Darcula">
   <metaInfo>
-    <property name="created">2021-04-04T00:10:44</property>
+    <property name="created">2022-02-16T12:52:34</property>
     <property name="ide">GoLand</property>
-    <property name="ideVersion">2020.3.4.0.0</property>
-    <property name="modified">2021-04-04T00:10:52</property>
+    <property name="ideVersion">2021.3.2.0.0</property>
+    <property name="modified">2022-02-16T12:54:34</property>
     <property name="originalScheme">NordSoud</property>
   </metaInfo>
   <colors>
@@ -1574,7 +1574,6 @@
         <option name="EFFECT_TYPE" value="2" />
       </value>
     </option>
-    <option name="GO_KEYWORD" baseAttributes="DEFAULT_KEYWORD" />
     <option name="GO_LABEL">
       <value>
         <option name="FOREGROUND" value="ebcb8b" />
@@ -1630,7 +1629,6 @@
         <option name="FOREGROUND" value="81a1c1" />
       </value>
     </option>
-    <option name="GO_PACKAGE" baseAttributes="DEFAULT_IDENTIFIER" />
     <option name="GO_PACKAGE_EXPORTED_CONSTANT">
       <value>
         <option name="FOREGROUND" value="d8dee9" />
@@ -1788,7 +1786,6 @@
         <option name="FOREGROUND" value="d8dee9" />
       </value>
     </option>
-    <option name="GO_TYPE_REFERENCE" baseAttributes="DEFAULT_CLASS_REFERENCE" />
     <option name="GO_TYPE_SPECIFICATION">
       <value />
     </option>
@@ -3758,7 +3755,6 @@
         <option name="FOREGROUND" value="eceff4" />
       </value>
     </option>
-    <option name="PY.BUILTIN_NAME" baseAttributes="DEFAULT_PREDEFINED_SYMBOL" />
     <option name="PY.COMMA">
       <value>
         <option name="FOREGROUND" value="eceff4" />
@@ -3812,7 +3808,6 @@
         <option name="EFFECT_TYPE" value="2" />
       </value>
     </option>
-    <option name="PY.KEYWORD" baseAttributes="DEFAULT_KEYWORD" />
     <option name="PY.KEYWORD_ARGUMENT">
       <value>
         <option name="FOREGROUND" value="d8dee9" />
@@ -3838,7 +3833,6 @@
         <option name="FOREGROUND" value="eceff4" />
       </value>
     </option>
-    <option name="PY.PREDEFINED_DEFINITION" baseAttributes="DEFAULT_PREDEFINED_SYMBOL" />
     <option name="PY.PREDEFINED_USAGE">
       <value>
         <option name="FOREGROUND" value="88c0d0" />
