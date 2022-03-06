@@ -53,7 +53,7 @@ function get_root_status() {
 
 function get_venv_status() {
   if [[ "$(virtualenv_prompt_info)" ]]; then
-    echo "%{$fg[cyan]%}౪ %{$reset_color%}"
+    echo "%{$fg[cyan]%}४ %{$reset_color%}"
   fi
 }
 

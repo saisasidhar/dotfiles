@@ -154,3 +154,5 @@ let g:gutentags_file_list_command = {
   \   'pyproject.toml': expand('~/.vim/gen_file_list_for_gutentags') . ' ///absolute'
   \ }
   \}
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd FileType gitcommit setlocal spell

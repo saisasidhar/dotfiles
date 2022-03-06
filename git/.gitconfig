@@ -3,6 +3,7 @@
     email = mail@sasidhar.in
 [core]
     editor = vim
+    pager = delta
 [alias]
     cb = checkout -b
     s = status
