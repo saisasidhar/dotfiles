@@ -17,7 +17,7 @@ Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'preservim/tagbar'
 Plugin 'arcticicestudio/nord-vim'
 Plugin 'itchyny/lightline.vim'
-Plugin 'fatih/vim-go'
+Plugin 'Yggdroot/indentLine'
 
 call vundle#end()
 
@@ -136,6 +136,8 @@ function! SynStack()
 endfunc
 command! Syn call SynStack()
 
+let g:indentLine_char = '|'
+let g:indentLine_color_gui = "#3B4252"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set autowrite " saves before running make
 " https://vim.fandom.com/wiki/Automatically_open_the_quickfix_window_on_:make
