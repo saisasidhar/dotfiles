@@ -12,7 +12,7 @@ base-packages:
 ubuntu-packages:
   pkg.installed:
     - pkgs:
-      - exuberant-ctags
+      - universal-ctags
       - build-essential
       - fonts-font-awesome
 {% else %}

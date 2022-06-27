@@ -1,4 +1,4 @@
-set encoding=utf-8
+
 set nocompatible
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -10,9 +10,10 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-commentary'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'easymotion/vim-easymotion'
-Plugin 'tpope/vim-eunuch'
 Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'preservim/tagbar'
 Plugin 'arcticicestudio/nord-vim'
@@ -25,7 +26,7 @@ filetype plugin indent on
 syntax enable
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set tabstop=4 softtabstop=4 shiftwidth=4
+set tabstop=2 softtabstop=2 shiftwidth=2
 set expandtab autoindent smartindent
 set number
 set relativenumber
@@ -39,7 +40,7 @@ set noerrorbells
 set vb t_vb=
 set laststatus=2
 set updatetime=1618 "Phi. GR. Sweet spot. 'cause 4 sec is too long
-set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+set listchars=tab:»·,trail:᙮,extends:›,precedes:‹,space:·
 set colorcolumn=120
 set splitbelow
 set splitright
@@ -53,13 +54,7 @@ let &t_EI = "\<Esc>[0 q"
 set ttimeout
 set ttimeoutlen=1
 set ttyfast
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-:command WQ wq
-:command Wq wq
-:command W w
-:command Q q
-:command Q1 q!
+set foldmethod=syntax
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <silent> <leader>i :set list!<CR>
@@ -70,6 +65,8 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+vnoremap > >gv
+vnoremap < <gv
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set path=.,**
@@ -79,7 +76,8 @@ set wildmenu
 let g:netrw_banner=0
 let g:netrw_winsize=24
 let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
+let g:netrw_browse_split = 0
+let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 
 let g:NetrwIsOpen=0
 function! ToggleNetrw()
@@ -136,8 +134,13 @@ function! SynStack()
 endfunc
 command! Syn call SynStack()
 
-let g:indentLine_char = '|'
-let g:indentLine_color_gui = "#3B4252"
+let g:indentLine_color_gui = '#3b4252'
+let g:indentLine_char = '│'
+let g:vim_json_conceal = 0
+let g:markdown_syntax_conceal = 0
+let g:indentLine_fileTypeExclude = ['help', 'startify', 'tagbar']
+let g:indentLine_bufTypeExclude = ['help']
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set autowrite " saves before running make
 " https://vim.fandom.com/wiki/Automatically_open_the_quickfix_window_on_:make
@@ -156,5 +159,7 @@ let g:gutentags_file_list_command = {
   \   'pyproject.toml': expand('~/.vim/gen_file_list_for_gutentags') . ' ///absolute'
   \ }
   \}
+nmap <F8> :TagbarToggle<CR>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType gitcommit setlocal spell

@@ -1,3 +1,5 @@
+export PATH=$PATH:$HOME/apps
+
 source "$HOME/.cargo/env"
 
 export NVM_DIR=$HOME/.nvm

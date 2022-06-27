@@ -10,5 +10,3 @@ hi def link pythonException Keyword
 hi def link pythonRepeat Keyword
 hi def link pythonOperator Keyword
 hi pythonBuiltin guifg=#B2ADF3 gui=NONE ctermfg=117 cterm=NONE
-
-" TODO ctags gen
