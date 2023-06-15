@@ -27,7 +27,7 @@ alias fixtty='reset; stty sane; tput rs1; clear; echo -e "\033c"'
 # docker purge dangling images
 alias docpurdangim="docker rmi $(docker images -f "dangling=true" -q)"
 # for WSL
-alias mnt="cd /mnt/c/Users/"
+alias cdw="cd /mnt/c/Users/"
 # golang interpreter
 alias yaegi='rlwrap yaegi'
 # quickly change to gitroot
