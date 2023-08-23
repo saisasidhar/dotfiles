@@ -1,5 +1,5 @@
 setlocal tabstop=4 softtabstop=4 shiftwidth=4
-setlocal colorcolumn=80
+setlocal colorcolumn=120
 
 setlocal path=.,**
 setlocal wildignore=*.pyc,*/__pycache__/*

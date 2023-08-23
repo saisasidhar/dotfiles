@@ -6,7 +6,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="ohmytheme"
 
-plugins=(git fzf docker z virtualenv)
+plugins=(git fzf docker z virtualenv copyfile)
 
 # history
 setopt HIST_IGNORE_ALL_DUPS
@@ -22,19 +22,14 @@ source $ZSH/oh-my-zsh.sh
 export GPG_TTY=$(tty)
 
 alias bat="batcat"
-
 alias fixtty='reset; stty sane; tput rs1; clear; echo -e "\033c"'
-# docker purge dangling images
 alias docpurdangim="docker rmi $(docker images -f "dangling=true" -q)"
-# for WSL
 alias cdw="cd /mnt/c/Users/"
-# golang interpreter
-alias yaegi='rlwrap yaegi'
-# quickly change to gitroot
+alias yaegi="rlwrap yaegi"
 alias gr='cd $(git rev-parse --show-toplevel)'
 
 # ls octal
-lso() { ls -alG "$@" | awk '{k=0;for(i=0;i<=8;i++)k+=((substr($1,i+2,1)~/[rwx]/)*2^(8-i));if(k)printf(" %0o ",k);print}'; }
+function lso() { ls -alG "$@" | awk '{k=0;for(i=0;i<=8;i++)k+=((substr($1,i+2,1)~/[rwx]/)*2^(8-i));if(k)printf(" %0o ",k);print}'; }
 
 function venvctl() {
     # https://stackoverflow.com/a/50830617
@@ -53,7 +48,23 @@ function venvctl() {
     fi
 }
 
-function cd() {
+function vcd() {
     builtin cd "$@"
     venvctl
 }
+
+# fzf
+export FZF_DEFAULT_COMMAND='find . ! -path "*git*"'
+export FZF_CTRL_T_COMMAND="find . -type f"
+export FZF_CTRL_R_OPTS="--border sharp --reverse --info hidden"
+export FZF_CTRL_T_OPTS="--border sharp --info hidden --preview 'cat {} | head -n 50'"
+export FZF_ALT_C_OPTS="--border sharp --info hidden --preview 'tree -C {} | head -n 50'"
+export FZF_COMPLETION_TRIGGER="^"
+zle -N fzf-cd-widget
+bindkey -M emacs '\C-o' fzf-cd-widget
+bindkey -M vicmd '\C-o' fzf-cd-widget
+bindkey -M viins '\C-o' fzf-cd-widget
+bindkey -rM emacs '\ec'
+bindkey -rM vicmd '\ec'
+bindkey -rM viins '\ec'
+

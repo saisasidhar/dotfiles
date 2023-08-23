@@ -57,6 +57,12 @@ function get_venv_status() {
   fi
 }
 
+function get_docker_compose_status() {
+  if [[ $(docker-compose ps --services --filter "status=running" | wc -l) -gt 1 ]]; then
+    echo "%{$fg[cyan]%}ౚ %{$reset_color%}"
+  fi
+}
+
 PROMPT='$(get_root_status)$(get_ssh_status)$(get_jobs_status)$(get_venv_status)%{$fg[white]%}$(get_pwd) %{$reset_color%}$(git_prompt_info)$(get_git_status)$ret_status'
 
 # Git info
